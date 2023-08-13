@@ -1,0 +1,55 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NutriChef.Views"
+             x:Class="NutriChef.Views.LoginPage"
+             BackgroundColor="#F2E3DB">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="Margin" Value="0,10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                     Padding="20">
+            <Image Source="account.png" WidthRequest="200" HeightRequest="200"
+                   Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
+
+            <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,40,0,10">
+                <Entry x:Name="UsernameEntry" Placeholder="Usuario"
+                       PlaceholderColor="#AAAAAA"
+                       FontSize="20" TextColor="#333333"
+                       HeightRequest="50" HorizontalOptions="FillAndExpand" />
+            </Frame>
+
+            <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True"
+                           FontSize="20" TextColor="#333333"
+                           PlaceholderColor="#AAAAAA"
+                           HeightRequest="50" HorizontalOptions="FillAndExpand" />
+                    <ImageButton Source="eye.png" Clicked="ShowPasswordButton_Clicked"/>
+                </StackLayout>
+            </Frame>
+
+            <Button Text="Iniciar Sesión" Clicked="LoginButton_Clicked" 
+                    FontSize="20" BackgroundColor="#41644A" TextColor="#FFFFFF"
+                    Margin="0,10,0,10" HeightRequest="50" CornerRadius="10"
+                    HorizontalOptions="FillAndExpand" />
+
+            <Button Text="Inicia Sesión con Huella Dactilar" Clicked="FingerprintButton_Clicked"  FontSize="20" BackgroundColor="#41644A" TextColor="#FFFFFF"
+                    Margin="0,0,0,10" HeightRequest="50" CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <Button Text="¿No tienes una cuenta? Regístrate" Clicked="RegisterButton_Clicked"
+                    FontSize="18" BackgroundColor="#263A29" TextColor="#FFFFFF"
+                    Margin="0,0,0,10" HorizontalOptions="Center" VerticalOptions="End" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NutriChef"
+             x:Class="NutriChef.Views.DetalleRecetas"
+             BackgroundColor="#F2E3DB">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+            <Color x:Key="PrimaryColor">#F2E3DB</Color>
+            <Color x:Key="SecondaryColor">#41644A</Color>
+            <Style TargetType="Label">
+
+                <Setter Property="Margin" Value="10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="{Binding Imagen, Converter={StaticResource ByteArrayToImageSourceConverter}}"
+                       Aspect="AspectFill"
+                       BackgroundColor="{StaticResource PrimaryColor}"
+                       HeightRequest="400"
+                       HorizontalOptions="FillAndExpand"
+                       Margin="20"
+                       />
+
+                <StackLayout Margin="20">
+                    <Label Text="{Binding Nombre}"
+                           FontSize="50"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource SecondaryColor}" />
+
+                    <Label Text="{Binding Categoria}"
+                           FontSize="25"
+                           FontAttributes="Italic"
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource SecondaryColor}" />
+
+                    <Label Text="Ingredientes"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource SecondaryColor}"
+                           Margin="0,20,0,10" />
+
+                    <Label Text="{Binding Ingredientes}"
+                           FontSize="20"
+                           TextColor="Black" />
+
+                    <Label Text="Calorias"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource SecondaryColor}"
+                           Margin="0,20,0,10" />
+
+                    <Label Text="{Binding Calorias, StringFormat='{0} cal'}"
+                           FontSize="20"
+                           TextColor="Black" />
+
+                    <Label Text="Pasos"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource SecondaryColor}"
+                           Margin="0,20,0,10" />
+
+                    <Label Text="{Binding Pasos}"
+                           FontSize="20"
+                           TextColor="Black" />
+
+                    <Button Text="Volver"
+                            Clicked="VolverButton_Clicked"
+                            BackgroundColor="{StaticResource SecondaryColor}"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HorizontalOptions="Center"
+                            WidthRequest="120"
+                            Margin="0,20" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

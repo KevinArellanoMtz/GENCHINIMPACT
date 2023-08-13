@@ -1,0 +1,112 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutriChef.Views.RegistroRecetas"
+             xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Core"
+             BackgroundColor="#F2E3DB">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#263A29</Color>
+            <Color x:Key="SecondaryColor">#41644A</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Label Text="Nombre de la receta"
+                   FontSize="20"
+                   TextColor="{StaticResource PrimaryColor}" />
+                <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
+                    <Entry x:Name="NombreEntry"
+                   FontSize="20"
+                   PlaceholderColor="#AAAAAA"
+                   Placeholder="Ingrese el nombre de la receta"
+                   TextColor="#000"
+                   HorizontalOptions="FillAndExpand" />
+                </Frame>
+
+                <Label Text="Categoría de la receta"
+                   FontSize="20"
+                   TextColor="{StaticResource PrimaryColor}" />
+                <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
+                    <Entry x:Name="CategoriaEntry"
+                   FontSize="20"
+                   PlaceholderColor="#AAAAAA"
+                   Placeholder="Ingrese la categoría de la receta"
+                   TextColor="#000"
+                   HorizontalOptions="FillAndExpand" />
+                </Frame>
+
+                <Label Text="Calorías de la receta"
+                   FontSize="20"
+                   TextColor="{StaticResource PrimaryColor}" />
+                <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
+                    <Entry x:Name="CaloriaEntry"
+                   FontSize="20"
+                   PlaceholderColor="#AAAAAA"
+                   Placeholder="Ingrese las caloráas de la receta"
+                   TextColor="#000"
+                   HorizontalOptions="FillAndExpand" />
+                </Frame>
+
+                <Label Text="Imagen de la receta"
+                   FontSize="20"
+                   TextColor="{StaticResource PrimaryColor}" />
+                <Image x:Name="ImagenReceta"
+       WidthRequest="200"
+       HeightRequest="200"
+       Aspect="AspectFill"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+                <StackLayout Orientation="Horizontal">
+                    <!--
+                <Button Text="Tomar foto"
+                        FontSize="20"
+                        BackgroundColor="#41644A"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Clicked="TomarFotoButton_Clicked" />
+                -->
+                    <Button Text="Seleccionar foto"
+                        FontSize="20"
+                        BackgroundColor="#41644A"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Clicked="SeleccionarFotoButton_Clicked" />
+                </StackLayout>
+
+                <Label Text="Ingredientes de la receta"
+                   FontSize="20"
+                   TextColor="{StaticResource PrimaryColor}" />
+                <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
+                    <Editor x:Name="IngredientesEditor"
+                    FontSize="20"
+                    PlaceholderColor="#AAAAAA"
+                    HeightRequest="120"
+                    Placeholder="Ingrese los ingredientes de la receta" 
+                    TextColor="#000"
+                     HorizontalOptions="FillAndExpand" />
+                </Frame>
+
+                <Label Text="Pasos de la receta"
+                   FontSize="20"
+                   TextColor="{StaticResource PrimaryColor}" />
+                <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
+                    <Editor x:Name="PasosEditor"
+                    FontSize="20"
+                    PlaceholderColor="#AAAAAA"
+                    HeightRequest="120"
+                    Placeholder="Ingrese los pasos de la receta" 
+                    TextColor="#000"
+                    HorizontalOptions="FillAndExpand" />
+                </Frame>
+
+                <Button Text="Guardar receta"
+                    FontSize="22"
+                    BackgroundColor="#263A29"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="GuardarRecetaButton_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
