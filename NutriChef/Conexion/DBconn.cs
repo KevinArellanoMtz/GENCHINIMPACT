@@ -6,6 +6,6 @@ namespace NutriChef.Conexion
 {
     public class DBconn
     {
-        public const string WepApyAuthentication = "AIzaSyClYulniV8TGnKqiSXG3ZkaWyHpwznuJN0";
+        public const string WepApyAuthentication = "+++++++++++++++++";
     }
 }
