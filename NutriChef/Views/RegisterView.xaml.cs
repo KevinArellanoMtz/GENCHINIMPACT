@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
+using NutriChef.Models;
+using NutriChef.ViewModel;
 using SQLite;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,47 +41,61 @@ namespace NutriChef.Views
 
         private async void RegisterButton_Clicked(object sender, EventArgs e)
         {
-            // Obtener los valores ingresados por el usuario
-            string username = UsernameEntry.Text;
-            string password = PasswordEntry.Text;
-            string confirmPassword = ConfirmPasswordEntry.Text;
+            //// Obtener los valores ingresados por el usuario
+            //string username = UsernameEntry.Text;
+            //string password = PasswordEntry.Text;
+            //string confirmPassword = ConfirmPasswordEntry.Text;
 
-            // Validar que los campos no estén vacíos y que las contraseñas coincidan
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
-            {
-                await DisplayAlert("Error", "Por favor, complete todos los campos", "Aceptar");
-                return;
-            }
+            //// Validar que los campos no estén vacíos y que las contraseñas coincidan
+            //if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
+            //{
+            //    await DisplayAlert("Error", "Por favor, complete todos los campos", "Aceptar");
+            //    return;
+            //}
 
-            if (password != confirmPassword)
-            {
-                await DisplayAlert("Error", "Las contraseñas no coinciden", "Aceptar");
-                return;
-            }
+            //if (password != confirmPassword)
+            //{
+            //    await DisplayAlert("Error", "Las contraseñas no coinciden", "Aceptar");
+            //    return;
+            //}
 
-            // Verificar si el usuario ya existe en la base de datos
-            var existingUser = await _database.Table<UserRegistration>().FirstOrDefaultAsync(u => u.Usuario == username);
-            if (existingUser != null)
-            {
-                await DisplayAlert("Error", "El usuario ya existe", "Aceptar");
-                return;
-            }
+            //// Verificar si el usuario ya existe en la base de datos
+            //var existingUser = await _database.Table<UserRegistration>().FirstOrDefaultAsync(u => u.Usuario == username);
+            //if (existingUser != null)
+            //{
+            //    await DisplayAlert("Error", "El usuario ya existe", "Aceptar");
+            //    return;
+            //}
 
-            // Crear un nuevo usuario
-            var newUser = new UserRegistration
-            {
-                Usuario = username,
-                Contrasenia = password
-            };
+            //// Crear un nuevo usuario
+            //var newUser = new UserRegistration
+            //{
+            //    Usuario = username,
+            //    Contrasenia = password
+            //};
 
-            // Insertar el nuevo usuario en la base de datos
-            await _database.InsertAsync(newUser);
+            //// Insertar el nuevo usuario en la base de datos
+            //await _database.InsertAsync(newUser);
 
-            // Mostrar un mensaje de registro exitoso
+            //// Mostrar un mensaje de registro exitoso
+            guardarContacto();
             await DisplayAlert("Éxito", "Registro exitoso", "Aceptar");
 
             // Redirigir al usuario a la página de inicio de sesión
             await Navigation.PushAsync(new LoginPage());
+        }
+        private async Task guardarContacto()
+        {
+            MUsuarios mUsuarios = new MUsuarios();
+            MVUsuario metodo = new MVUsuario();
+
+            mUsuarios.Nombre = nombre.Text;
+            mUsuarios.Apellido = Apellido.Text;
+            mUsuarios.Telefono = Telefono.Text;
+            mUsuarios.Icono = "--";
+
+            await metodo.InsertarUsuario(mUsuarios);
+            await DisplayAlert("Aviso", "Usuario guardado con exito", "OK");
         }
     }
 
@@ -90,4 +108,6 @@ namespace NutriChef.Views
         public string Usuario { get; set; }
         public string Contrasenia { get; set; }
     }
+
+   
 }

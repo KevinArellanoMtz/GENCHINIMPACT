@@ -12,43 +12,43 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20">
-                <Label Text="Nombre de la receta"
+                <Label Text="Nombre de la noticia"
                    FontSize="20"
                    TextColor="{StaticResource PrimaryColor}" />
                 <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
                     <Entry x:Name="NombreEntry"
                    FontSize="20"
                    PlaceholderColor="#AAAAAA"
-                   Placeholder="Ingrese el nombre de la receta"
+                   Placeholder="Ingrese el nombre de la noticia"
                    TextColor="#000"
                    HorizontalOptions="FillAndExpand" />
                 </Frame>
 
-                <Label Text="Categoría de la receta"
+                <Label Text="Categoría"
                    FontSize="20"
                    TextColor="{StaticResource PrimaryColor}" />
                 <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
                     <Entry x:Name="CategoriaEntry"
                    FontSize="20"
                    PlaceholderColor="#AAAAAA"
-                   Placeholder="Ingrese la categoría de la receta"
+                   Placeholder="Ingrese la categoría"
                    TextColor="#000"
                    HorizontalOptions="FillAndExpand" />
                 </Frame>
 
-                <Label Text="Calorías de la receta"
+                <Label Text="Autor/Fuentes"
                    FontSize="20"
                    TextColor="{StaticResource PrimaryColor}" />
                 <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
                     <Entry x:Name="CaloriaEntry"
                    FontSize="20"
                    PlaceholderColor="#AAAAAA"
-                   Placeholder="Ingrese las caloráas de la receta"
+                   Placeholder="Ingrese el autor o fuentes"
                    TextColor="#000"
                    HorizontalOptions="FillAndExpand" />
                 </Frame>
 
-                <Label Text="Imagen de la receta"
+                <Label Text="Imagen o foto de la nota"
                    FontSize="20"
                    TextColor="{StaticResource PrimaryColor}" />
                 <Image x:Name="ImagenReceta"
@@ -74,7 +74,7 @@
                         Clicked="SeleccionarFotoButton_Clicked" />
                 </StackLayout>
 
-                <Label Text="Ingredientes de la receta"
+                <Label Text="Ingrese descripcion corta"
                    FontSize="20"
                    TextColor="{StaticResource PrimaryColor}" />
                 <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
@@ -82,12 +82,12 @@
                     FontSize="20"
                     PlaceholderColor="#AAAAAA"
                     HeightRequest="120"
-                    Placeholder="Ingrese los ingredientes de la receta" 
+                    Placeholder="Ingrese informacion" 
                     TextColor="#000"
                      HorizontalOptions="FillAndExpand" />
                 </Frame>
 
-                <Label Text="Pasos de la receta"
+                <Label Text="Desarrollo"
                    FontSize="20"
                    TextColor="{StaticResource PrimaryColor}" />
                 <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
@@ -95,12 +95,12 @@
                     FontSize="20"
                     PlaceholderColor="#AAAAAA"
                     HeightRequest="120"
-                    Placeholder="Ingrese los pasos de la receta" 
+                    Placeholder="Ingrese informacion" 
                     TextColor="#000"
                     HorizontalOptions="FillAndExpand" />
                 </Frame>
 
-                <Button Text="Guardar receta"
+                <Button Text="Guardar Noticia"
                     FontSize="22"
                     BackgroundColor="#263A29"
                     TextColor="White"

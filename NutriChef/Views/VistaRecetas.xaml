@@ -39,7 +39,7 @@
         <StackLayout>
             <StackLayout Orientation="Horizontal" Margin="10">
                 <Button x:Name="FiltroButton"
-                        Text="Filtrar Recetas"
+                        Text="Filtrar noticias"
                         Clicked="FiltroButton_Clicked"
                         Style="{StaticResource FloatingButtonStyle}" />
                 <Button Text="Cerrar Sesión"
@@ -68,7 +68,7 @@
                                     </Image>
                                     <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand">
                                         <Label Text="{Binding Nombre}" FontSize="30" TextColor="Black" LineBreakMode="TailTruncation" HorizontalOptions="Start" />
-                                        <Label Text="{Binding Calorias, StringFormat='Calorias: {0} cal'}" FontSize="25" TextColor="#777777" LineBreakMode="TailTruncation" HorizontalOptions="Start" />
+                                        <Label Text="{Binding Calorias, StringFormat='Autor: {0} cal'}" FontSize="25" TextColor="#777777" LineBreakMode="TailTruncation" HorizontalOptions="Start" />
                                     </StackLayout>
                                 </StackLayout>
                                 <Frame BorderColor="#CCCCCC" CornerRadius="10" HasShadow="False" Padding="5">
@@ -80,9 +80,15 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Borrar Todas las Noticia"
+                    Clicked="BorrarRecetasButton_Clicked"
+                    Style="{StaticResource FloatingButtonStyle}" />
 
+            <Button Text="Modificar Noticia"
+                    Clicked="ModificarRecetaButton_Clicked"
+                    Style="{StaticResource FloatingButtonStyle}" />
             <!-- Botón flotante -->
-            <Button Text="Comparte tu Receta Aquí"
+            <Button Text="Comparte tu noticia aqui"
                     Clicked="RegistroRecetasButton_Clicked"
                     Style="{StaticResource FloatingButtonStyle}" />
         </StackLayout>

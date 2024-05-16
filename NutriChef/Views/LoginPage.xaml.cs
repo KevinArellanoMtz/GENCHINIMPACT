@@ -6,6 +6,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
+using NutriChef.ViewModel;
 
 
 namespace NutriChef.Views
@@ -17,6 +18,7 @@ namespace NutriChef.Views
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel(Navigation);
 
             // Crear la conexión a la base de datos SQLite
             var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "users.db");
@@ -32,47 +34,47 @@ namespace NutriChef.Views
             }
         }
 
-        private async void LoginButton_Clicked(object sender, EventArgs e)
-        {
-            var username = UsernameEntry.Text;
-            var password = PasswordEntry.Text;
+        //private async void LoginButton_Clicked(object sender, EventArgs e)
+        //{
+        //    var username = UsernameEntry.Text;
+        //    var password = PasswordEntry.Text;
 
-            // Verificar la conexión a Internet
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await DisplayAlert("Error", "No hay conexión a Internet", "OK");
-                return;
-            }
+        //    // Verificar la conexión a Internet
+        //    if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+        //    {
+        //        await DisplayAlert("Error", "No hay conexión a Internet", "OK");
+        //        return;
+        //    }
 
-            // Verificar la conexión a datos móviles
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet && Connectivity.NetworkAccess != NetworkAccess.ConstrainedInternet)
-            {
-                await DisplayAlert("Error", "No hay conexión a Internet o datos móviles", "OK");
-                return;
-            }
+        //    // Verificar la conexión a datos móviles
+        //    if (Connectivity.NetworkAccess != NetworkAccess.Internet && Connectivity.NetworkAccess != NetworkAccess.ConstrainedInternet)
+        //    {
+        //        await DisplayAlert("Error", "No hay conexión a Internet o datos móviles", "OK");
+        //        return;
+        //    }
 
-            // Realizar la autenticación en la base de datos SQLite
-            var user = await _database.Table<UserCredentials>().FirstOrDefaultAsync(u => u.Usuario == username && u.Contrasenia == password);
+        //    // Realizar la autenticación en la base de datos SQLite
+        //    var user = await _database.Table<UserCredentials>().FirstOrDefaultAsync(u => u.Usuario == username && u.Contrasenia == password);
 
-            if (user != null)
-            {
-                // Autenticación exitosa
+        //    if (user != null)
+        //    {
+        //        // Autenticación exitosa
 
-                // Guardar el estado de inicio de sesión en las propiedades de la aplicación
-                Application.Current.Properties["IsLoggedIn"] = true;
-                await Application.Current.SavePropertiesAsync();
+        //        // Guardar el estado de inicio de sesión en las propiedades de la aplicación
+        //        Application.Current.Properties["IsLoggedIn"] = true;
+        //        await Application.Current.SavePropertiesAsync();
 
-                await DisplayAlert("NutriChef", "Bienvenido :D", "Aceptar");
+        //        await DisplayAlert("Genshin Fan", "Bienvenido :D", "Aceptar");
 
-                // Navegar a la siguiente página
-                Application.Current.MainPage = new NavigationPage(new VistaRecetas());
-            }
-            else
-            {
-                // Autenticación fallida
-                await DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
-            }
-        }
+        //        // Navegar a la siguiente página
+        //        Application.Current.MainPage = new NavigationPage(new VistaRecetas());
+        //    }
+        //    else
+        //    {
+        //        // Autenticación fallida
+        //        await DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
+        //    }
+        //}
 
         private async void FingerprintButton_Clicked(object sender, EventArgs e)
         {
@@ -80,7 +82,7 @@ namespace NutriChef.Views
 
             if (supported)
             {
-                AuthenticationRequestConfiguration conf = new AuthenticationRequestConfiguration("Lector de biometría para NutriChef", "Ingresa a la app NutriChef");
+                AuthenticationRequestConfiguration conf = new AuthenticationRequestConfiguration("Lector de biometría para Genshin Impact", "Ingresa a la app Genchin Impact");
 
                 var result = await CrossFingerprint.Current.AuthenticateAsync(conf);
 

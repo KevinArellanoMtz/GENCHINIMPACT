@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -97,6 +98,68 @@ namespace NutriChef.Views
                     RecetasListView.ItemsSource = filteredRecetas;
                 }
             }
+        }
+        private async void BorrarRecetasButton_Clicked(object sender, EventArgs e)
+        {
+            // Obtener todas las recetas
+            var recetas = await _recetaService.GetRecetasAsync();
+
+            // Eliminar cada receta
+            foreach (var receta in recetas)
+            {
+                await _recetaService.DeleteRecetaAsync(receta);
+            }
+
+            // Limpiar la lista local de recetas y actualizar la vista
+            _recetas.Clear();
+            RecetasListView.ItemsSource = null;
+            RecetasListView.ItemsSource = _recetas;
+        }
+
+        private async void ModificarRecetaButton_Clicked(object sender, EventArgs e)
+        {
+            // Verifica si se ha seleccionado una receta
+            if (RecetasListView.SelectedItem == null)
+            {
+                await DisplayAlert("Error", "Por favor, selecciona una noticia para modificar.", "OK");
+                return;
+            }
+
+            // Obtener la receta seleccionada
+            var recetaSeleccionada = (Recetas)RecetasListView.SelectedItem;
+
+            // Mostrar un cuadro de diálogo para modificar la receta
+            var nuevaRecetaNombre = await DisplayPromptAsync("Modificar noticia", "Ingresa el nuevo nombre de la noticia", initialValue: recetaSeleccionada.Nombre);
+            var nuevaRecetaCategoria = await DisplayPromptAsync("Modificar noticia", "Ingresa la nueva categoría de la noticia", initialValue: recetaSeleccionada.Categoria);
+            var nuevaRecetaCalorias = await DisplayPromptAsync("Modificar noticia", "Ingresa el nuevo autor de la noticia", initialValue: recetaSeleccionada.Calorias);
+            var nuevosIngredientes = await DisplayPromptAsync("Modificar noticia", "Ingresa la nueva descripcion de la noticia", initialValue: recetaSeleccionada.Ingredientes);
+            var nuevosPasos = await DisplayPromptAsync("Modificar noticia", "Ingresa el nuevo desarrollo de la noticia", initialValue: recetaSeleccionada.Pasos);
+
+            // Actualizar la receta con los nuevos valores si no se ha cancelado
+            if (nuevaRecetaNombre != null && nuevaRecetaCategoria != null && nuevaRecetaCalorias != null && nuevosIngredientes != null && nuevosPasos != null)
+            {
+                recetaSeleccionada.Nombre = nuevaRecetaNombre;
+                recetaSeleccionada.Categoria = nuevaRecetaCategoria;
+                recetaSeleccionada.Calorias = nuevaRecetaCalorias;
+                recetaSeleccionada.Ingredientes = nuevosIngredientes;
+                recetaSeleccionada.Pasos = nuevosPasos;
+
+                // Actualizar la receta en la base de datos
+                await _recetaService.SaveRecetaAsync(recetaSeleccionada);
+
+                // Refrescar la lista
+                await RefreshRecetasList();
+            }
+        }
+        private async Task RefreshRecetasList()
+        {
+            _recetas.Clear();
+            var recetas = await _recetaService.GetRecetasAsync();
+            foreach (var receta in recetas)
+            {
+                _recetas.Add(receta);
+            }
+            RecetasListView.ItemsSource = _recetas;
         }
 
         private string CapitalizeFirstLetter(string input)

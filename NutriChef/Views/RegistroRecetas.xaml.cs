@@ -130,7 +130,7 @@ namespace NutriChef.Views
 
             if (_imagenReceta == null)
             {
-                await DisplayAlert("Error", "Debes de Subir una Imagen de tu Receta", "Aceptar");
+                await DisplayAlert("Error", "Debes de Subir una Imagen de tu noticia", "Aceptar");
                 return;
             }
 
@@ -146,7 +146,7 @@ namespace NutriChef.Views
 
             await _recetaService.SaveRecetaAsync(recetas);
 
-            await DisplayAlert("Registro Exitoso", "La Receta se Registró Correctamente", "Aceptar");
+            await DisplayAlert("Registro Exitoso", "La publicacion se Registró Correctamente", "Aceptar");
 
             // Limpiar los campos después de guardar la receta
             NombreEntry.Text = string.Empty;

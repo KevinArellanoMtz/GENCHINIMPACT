@@ -22,7 +22,7 @@
                    Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
 
             <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,40,0,10">
-                <Entry x:Name="UsernameEntry" Placeholder="Usuario"
+                <Entry x:Name="UsernameEntry" Placeholder="Correo" Text="{Binding UsernameEntry}"
                        PlaceholderColor="#AAAAAA"
                        FontSize="20" TextColor="#333333"
                        HeightRequest="50" HorizontalOptions="FillAndExpand" />
@@ -30,7 +30,7 @@
 
             <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0" Margin="0,0,0,10">
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True"
+                    <Entry x:Name="PasswordEntry" Placeholder="Contraseña" Text="{Binding PasswordEntry}" IsPassword="True"
                            FontSize="20" TextColor="#333333"
                            PlaceholderColor="#AAAAAA"
                            HeightRequest="50" HorizontalOptions="FillAndExpand" />
@@ -38,7 +38,7 @@
                 </StackLayout>
             </Frame>
 
-            <Button Text="Iniciar Sesión" Clicked="LoginButton_Clicked" 
+            <Button Text="Iniciar Sesión" x:Name="IniciarSesion" Command="{Binding LoginCommand}" 
                     FontSize="20" BackgroundColor="#41644A" TextColor="#FFFFFF"
                     Margin="0,10,0,10" HeightRequest="50" CornerRadius="10"
                     HorizontalOptions="FillAndExpand" />

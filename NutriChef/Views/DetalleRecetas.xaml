@@ -38,7 +38,7 @@
                            HorizontalOptions="Center"
                            TextColor="{StaticResource SecondaryColor}" />
 
-                    <Label Text="Ingredientes"
+                    <Label Text="Descripcion"
                            FontSize="24"
                            FontAttributes="Bold"
                            TextColor="{StaticResource SecondaryColor}"
@@ -48,7 +48,7 @@
                            FontSize="20"
                            TextColor="Black" />
 
-                    <Label Text="Calorias"
+                    <Label Text="Autor/ Fuentes"
                            FontSize="24"
                            FontAttributes="Bold"
                            TextColor="{StaticResource SecondaryColor}"
@@ -58,7 +58,7 @@
                            FontSize="20"
                            TextColor="Black" />
 
-                    <Label Text="Pasos"
+                    <Label Text="Contenido"
                            FontSize="24"
                            FontAttributes="Bold"
                            TextColor="{StaticResource SecondaryColor}"
